@@ -52,7 +52,7 @@ class BookingStatus(models.TextChoices):
     CANCELED = "canceled", "Скасовано"
 
 class Booking(TimeStampedModel):
-    room = models.ForeignKey(Room, on_delete=models.PROTECT, related_name="boolings", verbose_name="Кімната")
+    room = models.ForeignKey(Room, on_delete=models.PROTECT, related_name="bookings", verbose_name="Кімната")
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="bookings", verbose_name="Користувач")
     check_in = models.DateField(verbose_name="Заїзд")
     check_out = models.DateField(verbose_name="Виїзд")
