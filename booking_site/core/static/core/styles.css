@@ -1,0 +1,8 @@
+body {scroll-behavior: smooth;}
+.card-title {letter-spacing: .3px;}
+
+body{font-family: system-ui, sans-serif; max-width: 900px; margin: 24px auto; padding: 0 16px}
+nav a{margin-right: 12px;}
+table{border-collapse: collapse; width: 100%;}
+th, td{border: 1px solid #ddd; padding: 8px;}
+.btn{display:inline-block; padding: 6px 10px; border: 1px solid #333; text-decoration: none;}

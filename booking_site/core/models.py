@@ -46,9 +46,27 @@ class Room(models.Model):
     def __str__(self):
         return f"%{self.number} - {self.category.name}"
     
+    def current_status(self):
+        last_booking = self.bookings.order_by("-created_at").first()
+        if last_booking:
+            return last_booking.get_status_display()
+        return "Немає бронювань"
+    
+    def current_status_badge(self):
+        last_booking = self.bookings.order_by("-created_at").first()
+        if not last_booking:
+            return '<span class="badge bg-info">Немає бронювань</span>'
+
+        mapping = {
+            "pending": '<span class="badge bg-warning text-dark">Очікує</span>',
+            "confirmed": '<span class="badge bg-success">Заброньовано</span>',
+            "canceled": '<span class="badge bg-secondary">Скасовано</span>',
+        }
+        return mapping.get(last_booking.status, "—")
+    
 class BookingStatus(models.TextChoices):
     PENDING = "pending", "Очікує"
-    CONFIRMED = "confirmed", "Підтверджено"
+    CONFIRMED = "confirmed", "Заброньовано"
     CANCELED = "canceled", "Скасовано"
 
 class Booking(TimeStampedModel):

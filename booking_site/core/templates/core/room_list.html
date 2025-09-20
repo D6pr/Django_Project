@@ -1,33 +1,63 @@
 {% extends "core/base.html" %}
 {% block title %}Список кімнат{% endblock %}
 {% block content %}
-<h1>Кімнати</h1>
+<div class="container mt-4">
+  <h1 class="mb-4">Кімнати</h1>
 
-<form method="get" style="margin:12px 0">
-  <input type="text" name="q" value="{{ q|default:'' }}" placeholder="Пошук за номером">
-  <select name="cat">
-    <option value="">Усі категорії</option>
-    {% for c in categories %}
-      <option value="{{ c.id }}" {% if cat|default:'' == c.id|stringformat:'s' %}selected{% endif %}>
-        {{ c.name }}
-      </option>
-    {% endfor %}
-  </select>
-  <button class="btn" type="submit">Фільтрувати</button>
-</form>
+  <form method="get" class="row g-3 mb-4">
+    <div class="col-md-4">
+      <input type="text" name="q" value="{{ q|default:''}}" class="form-control" placeholder="Пошук за номером">
+    </div>
+    <div class="col-md-4">
+      <select name="cat" class="form-control">
+        <option value="">Усі категорії</option>
+        {% for c in categories %}
+          <option value="{{ c.id }}" {% if cat|default:'' == c.id|stringformat:'s' %}selected{% endif %}>
+            {{ c.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-4 d-grid">
+      <button type="submit" class="btn btn-primary">Фільтрувати</button>
+    </div>
+  </form>
 
-<table>
-  <tr><th>Номер</th><th>Категорія</th><th>Поверх</th><th>Статус</th><th></th></tr>
-  {% for r in rooms %}
-    <tr>
-      <td>{{ r.number }}</td>
-      <td>{{ r.category.name }}</td>
-      <td>{{ r.floor }}</td>
-      <td>{% if r.is_active %}Доступна{% else %}Вимкнено{% endif %}</td>
-      <td><a class="btn" href="{% url 'core:room_detail' r.pk %}">Деталі</a></td>
-    </tr>
-  {% empty %}
-    <tr><td colspan="5">Нічого не знайдено</td></tr>
-  {% endfor %}
-</table>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered aling-middle">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Номер</th>
+          <th scope="col">Категорія</th>
+          <th scope="col">Поверх</th>
+          <th scope="col">Статус</th>
+          <th scope="col">Дія</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rooms %}
+          <tr>
+            <td><span class="fw-bold">{{ r.number }}</span></td>
+            <td>{{ r.category.name }}</td>
+            <td>{{ r.floor }}</td>
+            <td>
+              {{ r.current_status }}
+            </td>
+            <td>
+              <a class="btn btn-sm btn-outline-primary" href="{% url 'core:room_detail' r.pk %}">Деталі</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="5" class="text-center text-muted">Нічого не знайдено</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+
+
+</div>
 {% endblock %}
+
