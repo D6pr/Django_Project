@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.db import IntegrityError, transaction
 from django.urls import reverse
@@ -69,3 +71,15 @@ def booking_cancel(request, pk: int):
         booking.save()
         messages.info(request, "Бронювання скасовано.")
     return redirect("core:my_bookings")
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Обліковий запис створено. Ласкаво просимо")
+            return redirect("core:room_list")
+    else:
+        form = UserCreationForm()
+    return render(request, "core/auth/register.html", {"form": form})
