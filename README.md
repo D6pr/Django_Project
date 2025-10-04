@@ -64,13 +64,13 @@ The administrator can manage bookings and users through the Django admin panel.
     cd Django_Project
 ```
 3. Activate the virtual environment:
+* On Windows:
 ```sh
-    On Windows:
-        venv\Scripts\activate
+    venv\Scripts\activate
 ```
+* On Linux/macOS:
 ```sh
-    On Linux/macOS:
-        source venv/bin/activate
+    source venv/bin/activate
 ```
 4. Run the development server:
 ```sh
