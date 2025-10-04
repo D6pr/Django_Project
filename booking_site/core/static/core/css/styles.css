@@ -1,0 +1,14 @@
+body {scroll-behavior: smooth;}
+.card-title {letter-spacing: .3px;}
+
+body{font-family: system-ui, sans-serif; max-width: 1200px; margin: 24px auto; padding: 0 4px}
+nav a{margin-right: 6px;}
+table{border-collapse: collapse; width: 100%;}
+th, td{border: 1px solid #ddd; padding: 8px;}
+.btn{display:inline-block; padding: 9px 10px; border: 1px solid #333; text-decoration: none;}
+
+.navbar .btn-link.nav-link {
+  display: inline-block;
+  position: relative;
+  top: 6.5px;
+}
