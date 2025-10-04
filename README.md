@@ -6,6 +6,7 @@ The administrator can manage bookings and users through the Django admin panel.
 ![alt text](image.png)
 
 ## Django_Project
+```
 booking_site/                # Main Django project configuration
 ├── settings.py              # Global project settings (DB, apps, static files, etc.)
 ├── urls.py                  # Root URL configuration
@@ -36,7 +37,7 @@ core/                        # Main application (app) of the project
 ├── manage.py                    # Django management script
 ├── .gitignore                   # Git ignore file
 └── README.md                    # Project documentation
-
+```
 ## Main Features
 
 * User registration and authentication.
