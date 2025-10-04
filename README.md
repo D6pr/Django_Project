@@ -7,36 +7,37 @@ The administrator can manage bookings and users through the Django admin panel.
 
 ## Django_Project
 ```
-booking_site/                # Main Django project configuration
-├── settings.py              # Global project settings (DB, apps, static files, etc.)
-├── urls.py                  # Root URL configuration
-├── asgi.py / wsgi.py        # ASGI/WSGI entry points for deployment
-└── __init__.py              # Marks this directory as a Python package
-core/                        # Main application (app) of the project
-├── admin.py                 # Registers models in the Django admin panel
-├── apps.py                  # App configuration
-├── models.py                # Database models (rooms, bookings, users)
-├── views.py                 # Main request handling logic
-├── urls.py                  # App-level URL configuration
-├── forms.py                 # Django forms for authentication and booking
-├── tests.py                 # Unit tests
+├── booking_site/ # Main Django project configuration
+│ ├── settings.py # Global project settings (DB, apps, static files, etc.)
+│ ├── urls.py # Root URL configuration
+│ ├── asgi.py / wsgi.py # ASGI/WSGI entry points for deployment
+│ └── init.py # Marks this directory as a Python package
 │
-├── static/core/css/         # Static files (CSS, images, scripts)
-├──styles.css           # Main stylesheet
+├── core/ # Main application (app) of the project
+│ ├── admin.py # Registers models in the Django admin panel
+│ ├── apps.py # App configuration
+│ ├── models.py # Database models (rooms, bookings, users)
+│ ├── views.py # Main request handling logic
+│ ├── urls.py # App-level URL configuration
+│ ├── forms.py # Django forms for authentication and booking
+│ ├── tests.py # Unit tests
+│ │
+│ ├── static/core/css/ # Static files (CSS, images, scripts)
+│ │ └── styles.css # Main stylesheet
+│ │
+│ ├── templates/core/ # HTML templates for the app
+│ │ ├── base.html # Base layout template
+│ │ ├── room_list.html # Page with list of available rooms
+│ │ ├── room_detail.html # Room detail page
+│ │ ├── my_bookings.html # User's bookings page
+│ │ └── auth/ # Authentication templates
+│ │ ├── login.html # Login page
+│ │ └── register.html # Registration page
 │
-├── templates/core/          # HTML templates for the app
-├── base.html            # Base layout template
-├── room_list.html       # Page with list of available rooms
-├── room_detail.html     # Room detail page
-├── my_bookings.html     # User's bookings page
-└── auth/                # Authentication templates
-    ├── login.html       # Login page
-    └── register.html    # Registration page
-│
-├── db.sqlite3                   # Local SQLite database
-├── manage.py                    # Django management script
-├── .gitignore                   # Git ignore file
-└── README.md                    # Project documentation
+├── db.sqlite3 # Local SQLite database
+├── manage.py # Django management script
+├── .gitignore # Git ignore file
+└── README.md # Project documentation
 ```
 ## Main Features
 
